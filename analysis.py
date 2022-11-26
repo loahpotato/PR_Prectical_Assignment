@@ -15,8 +15,8 @@ def hist(data, save=None, x_label=None):
     cm = plt.cm.get_cmap('viridis')
     for c, p in zip(col, patches):
         plt.setp(p, 'facecolor', cm(c))
-
-    plt.tick_params(labelsize=20)
+    plt.tick_params(labelsize=24)
+    ax.yaxis.offsetText.set_fontsize(24)
     ax.set_xlabel(x_label, fontsize=20, fontweight='semibold')
     ax.set_ylabel('Count', fontsize=20, fontweight='semibold')
     fig.show()

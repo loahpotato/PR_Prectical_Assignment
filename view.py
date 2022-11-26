@@ -1,10 +1,8 @@
-import pandas as pd
 import matplotlib.pyplot as plt
+import tools
 
 
-mnist_data = pd.read_csv('data/mnist.csv').values
-labels = mnist_data[:, 0]
-digits = mnist_data[:, 1:]
+labels, digits = tools.read_data()
 img_size = 28
 plt.imshow(digits[0].reshape(img_size, img_size))
 plt.show()
