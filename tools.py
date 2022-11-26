@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 def read_data():
@@ -7,4 +8,13 @@ def read_data():
     digits = mnist_data[:, 1:]
     # img_size = 28
     return labels, digits  # , img_size
+
+
+def view_digit(index=0, img_size=28):
+    labels, digits = read_data()
+    plt.imshow(digits[index].reshape(img_size, img_size))
+    plt.show()
+
+
+# view_digit()
 
