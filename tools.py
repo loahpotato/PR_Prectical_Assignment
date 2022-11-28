@@ -12,8 +12,10 @@ def read_data():
 
 def view_digit(index=0, img_size=28):
     labels, digits = read_data()
+    fig = plt.figure()
     plt.imshow(digits[index].reshape(img_size, img_size))
     plt.show()
+    fig.savefig('./images/view.pdf')
 
 
 # view_digit()
