@@ -7,6 +7,9 @@ from sklearn.linear_model import LogisticRegressionCV, LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from concentration import cal_concentration
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import ConfusionMatrixDisplay
+import matplotlib.pyplot as plt
 
 labels, digits = tools.read_data()
 twoD_list = []
@@ -34,3 +37,15 @@ X_train, X_test, y_train, y_test = train_test_split(combined_list, labels, test_
 clf = LogisticRegressionCV(penalty='l1', solver='saga', multi_class='multinomial', scoring='accuracy')
 clf.fit(X_train, y_train)
 print(clf.score(X_test, y_test))  # score is 0.33
+
+
+# calculate confusion matrix and plot
+matrix = confusion_matrix(y_test, clf.predict(X_test))
+
+accu = []
+for num,item in enumerate(matrix):
+    accu.append( item[num] / sum(item) )
+print(accu)
+
+ConfusionMatrixDisplay.from_estimator(clf, X_test, y_test)
+plt.show()
