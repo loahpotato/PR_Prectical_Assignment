@@ -11,7 +11,7 @@ labels, digits = tools.read_data()
 digits = np.array(digits)
 X_train, X_test, y_train, y_test = train_test_split(digits, labels, test_size=37000, random_state=42, stratify=labels)
 print(len(X_train))
-clf = LogisticRegression(penalty='l1', solver='saga', C=1 , tol=1e-2, multi_class='multinomial', max_iter = 100, n_jobs=-1)
+clf = LogisticRegression(penalty='l1', solver='saga', C=14 , tol=1e-2, multi_class='multinomial', max_iter = 100, n_jobs=-1)
 clf.fit(X_train, y_train)
 print(clf.score(X_test, y_test))  # score is 0.89
 
