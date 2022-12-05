@@ -13,7 +13,7 @@ C_error = []
 
 # Cross Verification
 for c in c_range:
-    lr = LogisticRegression(C=c, penalty='l2', solver='saga',tol=1e-2, multi_class='multinomial', max_iter = 100, n_jobs=-1)
+    lr = LogisticRegression(C=c, penalty='l1', solver='saga', tol=1e-2, multi_class='multinomial', max_iter=100, n_jobs=-1)
     # 5:1 segment
     scores = cross_val_score(lr, X_train, y_train, cv=5, scoring='accuracy')
     C_error.append(1 - scores.mean())
